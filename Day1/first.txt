@@ -1,0 +1,46 @@
+//console.log("hello, world");
+//1, 2, 3
+//% jvascript is the dynamic scripting lag (scripting : there is no precomlition like c &c ++)
+// c ++ and c 1st complied create binary code n there process map come into the picture but in javascript engine there is interprteor and he th guy who read the source code he is underatnd the code is wrong or night
+//but some need to undrstand then JIT COmplier into the picture who does this work
+
+//Javascript Engine
+// 1. Memory management:
+// 2. Interpertor:
+//3. JIT Complier:
+//4. Garbe Collector:
+//? defining a vailable called g
+
+g = 10; // ! There is no var before g
+// ?these are also varibale
+var x = 5; // * Local (node but goes into the GEC for browser)
+var y = 7; // * Local 
+
+// Very prg lang if u create data in run time it will create in Heap
+// even g = 10 after pgm 
+
+//Globalwindow
+//Dictory: where u store the varbale name which the key and value which the assign it to
+
+
+// every in javascript enter the heap because very thing
+// happended in run time because coz it is not compling
+// 
+
+//But what happen in case of var x and var y
+// x and y are local anyoumus that why there are not entered in heap
+// but every varibale create there loacl memory and that is aloso happend at run time so now there is 
+//create into the Heap 
+
+//Heap content local and Global
+//stack 
+
+//so everying goesinto the javascript in heap
+// global is point to the didctory an local is point to the local but local also point to the dictonary 
+//so it will in heap
+
+//if we import and export then it is also a part of anynous fun?
+
+//only function  exicution context and loacal pointer in stack other wie very ting in heap
+console.log(g, x, y);
+// !not an data

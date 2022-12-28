@@ -1,0 +1,27 @@
+<html>
+
+<head>
+    <title>My website</title>
+
+    <!-- % Javascript part of Html page-->
+    <script>
+        function add(a, b)
+        {
+            var m = document.getElementById("mybutton"); // is not a part of javascript it is part of browser Dom
+            m.innerHTML = "Changed";
+            var c = a + b;
+            return c;
+        }
+    </script>
+
+</head>
+
+<!-- * Description the content of the page -->
+<body>
+    <h1>Hello</h1>
+
+    <!-- % call the Javascript function and slow result-->
+    <button id="mybutton" onclick="alert(add(5, 7));">Click Me</button>
+</body>
+
+</html>

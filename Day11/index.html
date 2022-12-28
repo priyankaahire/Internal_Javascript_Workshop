@@ -1,0 +1,37 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+
+        function longRun(ms) {
+            const start = new Date;
+            while (new Date() - start < ms);
+            return 42;
+        }
+        function exceutor(resolve, reject) {
+            console.log("Executor statr");
+            resolve(longRun(3000));
+            console.log("Executor end");
+
+        }
+        async function process() {
+            console.log("In process");
+            let pakka = new Promise(exceutor);
+            pakka.then(result => console.log("Process", result));
+
+            const result = await longRun(0);
+            console.log("Next statement", result);
+            console.log("Program ends")
+        }
+
+        process();
+    </script>
+</head>
+
+<body></body>
+
+</html>

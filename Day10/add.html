@@ -1,0 +1,24 @@
+<html>
+    <head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, intial-scale=1.0">
+     <title>Add Program</title> 
+
+     <script>
+         const add = (a, b) => {
+             const first = +document.querySelector("#ele1").value;     //> 11
+             const second = +document.querySelector("#ele2").value;    //> 33
+             document.querySelector("#result").value = first + second; //> 44
+            }
+     </script>
+     </script>
+    </head>
+    <body>
+        <div>
+           <input id="ele1" type="text" placeholder="Enter value">
+           </br><input id="ele2" type="text" placeholder="Enter value">
+           </br><button onclick="add()" id="" >Add</button>
+           <input type="text" id="result" placeholder="result"/> <br/>
+        </div>
+    </body>
+</html>

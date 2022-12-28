@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        longRun = ms => {
+            console.log("MS", ms);
+            const start = new Date;
+            while (new Date - start < ms);
+        }
+        frozen = () => {
+            console.log("Frozen started");
+            longRun(5000);
+            console.log("frozen ended")
+        }
+
+        notFrozen = () => {
+            console.log("notfroozen started");
+            setTimeout(longRun, 10000, 10000);
+            console.log("notFrozen ended");
+        }
+        excecutor = (resolve, rejected ) => {
+            console.log("I am in excecutor");
+            //longRun(10000); //! This is also Frezzing the browser and execute later not a || (parallel)
+            //* If your using setTimeout
+            resolve("It is resolved");
+            longRun(10000);
+            //OUTPUT after removing setTimeOut in promoses
+            // Promise
+            // frozen.html:27 I am in excecutor
+            // frozen.html:11 MS 10000
+            // frozen.html:36 Promise was made [object Promise]
+            // frozen.html:38 It is resolved
+          
+
+
+            //setTimeout(longRun, 10000, 10000); //* It will display quickly
+            //OUTPUT after setTimeOut in promoses
+            // Promise
+            // frozen.html:27 I am in excecutor
+            // frozen.html:36 Promise was made [object Promise]
+            // frozen.html:38 It is resolved
+            // frozen.html:11 MS 10000
+        }
+        doPromise = () => {
+            console.log("Promise");
+            const pakka = new Promise(excecutor);
+            console.log(`Promise was made ${pakka}`);
+                pakka
+                .then(result => console.log(result))
+                .catch(ohh => console.log(ohh));
+         
+        }
+        doWorker = () => {
+            const worker = new Worker('background.js');
+            worker.postMessage(3000);
+            worker.onmessage = function(response) {
+                console.log("Worker finished", response.data);
+                document.querySelector("#result").value = response.data;
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <div class="">
+        <input type="number" id="" placeholder="Enter the value" /><br />
+        <button onclick="frozen()">Frozen</button>
+        <button onclick="notFrozen()">Smooth</button>
+        <button onclick="doPromise()">Promise</button>
+        <button onclick="doWorker()">Worker</button>
+    </div>
+    Result: <input type="text" id="result" placeholder="result" />
+</body>
+
+</html>
